@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+
+
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+
+        <title>Busca de Exames</title>
+    </head>
+
+     <body class ='bg-dark text-white-200 font-primary'>
+
+        <div class="w-auto p-3">
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+
+                <form method="get" action="{% url 'exame:homepage' %}">
+
+                    <input type="text" class="py-1 px-2 rounded-md text-black" name="query" placeholder="Pesquisar..." >
+
+                 <button type="submit" class="btn btn-warning">Buscar</button>
+
+
+                </form>
+            </div>
+        </div>
+        </div>
+            <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Jejum</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Prazo</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            {% for Busca in object_list %}
+            <tbody>
+                 <tr>
+                    <th scope="row">{{Busca.id}}</th>
+                    <td>{{Busca.Nome}}</td>
+                    <td>{{Busca.Jejum}}</td>
+                    <td>{{Busca.Material}}</td>
+                    <td>{{Busca.Prazo}}</td>
+                    <td>{{Busca.Ativo}}</td>
+                 </tr>
+            {% endfor %}
+            </thead>
+            </table>
+    </body>
+
+
+</html>
+
